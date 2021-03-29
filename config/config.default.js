@@ -20,7 +20,7 @@ module.exports = appInfo => {
   config.middleware = [];
 
 
-  // 对 egg-view-ejs 视图以及ejs 做一下简单配置
+  // 配置 使用 egg-view-ejs 模板引擎
   config.view = {
     mapping: {
       '.html': 'ejs',
@@ -34,6 +34,13 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+
+  // 自定义配置公共的 API
+  /**
+   * 下面定义一个接口的址
+   */
+  config.api = 'http://www.phonegap100.com';
+
 
   return {
     ...config,
