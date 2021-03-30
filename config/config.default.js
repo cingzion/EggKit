@@ -16,8 +16,20 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1616862861429_6093';
 
-  // add your middleware config here
-  config.middleware = [];
+  // add your middleware config here 增加配置中间件
+  config.middleware = [ 'printdate', 'forbidip' ];
+  // 给 printdate 中间件里传入的参数
+  config.printdate = {
+    aaa: 'aaaa',
+  };
+
+  // 要屏蔽的中间件 ip 如下
+  config.forbidip = {
+    forbidips: [
+      '127.0.0.1',
+      '192.168.8.102',
+    ],
+  };
 
 
   // 配置 使用 egg-view-ejs 模板引擎

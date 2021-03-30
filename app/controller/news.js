@@ -19,7 +19,7 @@ class NewsController extends Controller {
 
     // 调用 extend 里面的 request 里面的方法
     const foo = ctx.request.foo('调用 extend 里面的 request 里面的方法');
-    console.log('foo:', foo); // foo: 127.0.0.1:7001
+    // console.log('foo:', foo); // foo: 127.0.0.1:7001
 
 
     await ctx.render('news', {
@@ -39,7 +39,7 @@ class NewsController extends Controller {
     // 获取 service 服务的数据
     const data = await ctx.service.news.getNewsContent(aid);
 
-    console.log('======99999:', data);
+    // console.log('======99999:', data);
 
     await ctx.render('newscontent', {
       title: '新闻详情',

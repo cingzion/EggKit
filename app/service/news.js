@@ -29,7 +29,7 @@ class NewService extends Service {
     const response = await ctx.curl(api);
     const data = JSON.parse(response.data);
 
-    console.log('data通过抓取接口返回数据: ', data);
+    // console.log('data通过抓取接口返回数据: ', data);
     return data.result;
 
   }
