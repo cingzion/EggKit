@@ -18,10 +18,24 @@ module.exports = appInfo => {
 
   // add your middleware config here 增加配置中间件
   // config.middleware = [ 'printdate', 'forbidip' ];
-  config.middleware = [ 'printdate', 'auth' ];
+  config.middleware = [ 'printdate', 'auth', 'jsonp', 'compress' ];
   // 给 printdate 中间件里传入的参数
   config.printdate = {
     aaa: 'aaaa',
+  };
+
+  // 给中间件传参数
+  config.auth = {
+    title: '这是一个验证的中间件Auth',
+  };
+
+  // 对 compress 中间件增加一些参数
+  /**
+   * 开启 gzip 压缩
+   * @type {{threshold: number}}
+   */
+  config.compress = {
+    threshold: 1024, // 它的默认就是1024， 它支持指定只有当有当 body 大于配置的 threshold 时才进行 gzip 压缩
   };
 
   // 要屏蔽的中间件 ip 如下
@@ -71,6 +85,16 @@ module.exports = appInfo => {
     httpOnly: true, // 是否允许 js 操作 session  是 true / 否 false
     encrypt: true, // 是否加密，一般我们为加密的方式
     renew: true, // 延长会话有效期， 如果 renew 等于 true, 那么每次刷新页面的时候  session 都会被延期
+  };
+
+  // 框架中间件的默认配置
+  /**
+   * 这是对我们前端 post 提交数据的一种限制大小
+   * 提示：这里其实不需要管它，也不需要自行配置，这里只是说一下
+   * @type {{jsonLimit: string}}
+   */
+  config.bodyParser = {
+    jsonLimit: '10mb', // Default is 1mb
   };
 
 
