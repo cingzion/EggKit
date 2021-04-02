@@ -6,6 +6,25 @@
 module.exports = app => {
   const { router, controller } = app;
 
+  // TODO: 后台
+  // 用户管理
+  router.get('/admin/user', controller.admin.user.index);
+  // 文章管理
+  router.get('/admin/article', controller.admin.article.index);
+  router.get('/admin/article/add', controller.admin.article.add);
+  router.get('/admin/article/edit', controller.admin.article.edit);
+  // 商品管理
+  router.get('/admin/product', controller.admin.product.index);
+  router.get('/admin/product/add', controller.admin.product.add);
+  router.get('/admin/product/edit', controller.admin.product.edit);
+
+  // TODO: API 接口
+  // 用户管理API
+  router.get('/api/user', controller.api.user.index);
+  // 商品管理API
+  router.get('/api/product', controller.api.product.index);
+
+
   // 在路由中获取中间件
   /**
    * 这里传了参数

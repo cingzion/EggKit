@@ -18,16 +18,23 @@ module.exports = appInfo => {
 
   // add your middleware config here 增加配置中间件
   // config.middleware = [ 'printdate', 'forbidip' ];
-  config.middleware = [ 'printdate', 'auth', 'jsonp', 'compress' ];
+  /**
+   * 注意：地如果我们的 中间件的文件名是 admin_auth 是这样的时候，
+   *      那么我们在下面加入中间件的是要把 admin_auth 改成 adminAuth 这样才能生效的，不然会报错
+   *      所有的路由都会经过 adminAuth 这里
+   * @type {string[]}
+   */
+  config.middleware = [ 'printdate', 'auth', 'jsonp', 'compress', 'adminAuth' ];
   // 给 printdate 中间件里传入的参数
   config.printdate = {
     aaa: 'aaaa',
   };
 
-  // 给中间件传参数
-  config.auth = {
-    title: '这是一个验证的中间件Auth',
+  // 中间件-对后台的管理页面进行通用配置
+  config.adminAuth = {
+    match: '/admin', // 通过访问指定的路由进行使用中间件，这种方式只能使用一个
   };
+
 
   // 对 compress 中间件增加一些参数
   /**
@@ -35,6 +42,7 @@ module.exports = appInfo => {
    * @type {{threshold: number}}
    */
   config.compress = {
+    // enable: false, // 通用是否开启
     threshold: 1024, // 它的默认就是1024， 它支持指定只有当有当 body 大于配置的 threshold 时才进行 gzip 压缩
   };
 
