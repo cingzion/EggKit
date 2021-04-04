@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+</head>
+<body>
+<div class="register">
+    <h1>注册</h1>
+    <form action="/doRegister" method="POST">
+        <input type="hidden" name="_csrf" value="<%=csrf%>">
+        <p><label><span>用 户：</span><input type="text" name="userName" placeholder="请输入用户"></label></p>
+        <p><label><span>密 码：</span><input type="password" name="password" placeholder="请输入密码"></label></p>
+        <p><button type="submit">注册</button></p>
+    </form>
+</div>
+</body>
+</html>

@@ -6,37 +6,13 @@
 module.exports = app => {
   const { router, controller } = app;
 
-  // TODO: 后台
-  // 用户管理
-  router.get('/admin/user', controller.admin.user.index);
-  // 文章管理
-  router.get('/admin/article', controller.admin.article.index);
-  router.get('/admin/article/add', controller.admin.article.add);
-  router.get('/admin/article/edit', controller.admin.article.edit);
-  // 商品管理
-  router.get('/admin/product', controller.admin.product.index);
-  router.get('/admin/product/add', controller.admin.product.add);
-  router.get('/admin/product/edit', controller.admin.product.edit);
+  router.get('/', controller.home.index);
 
-  // TODO: API 接口
-  // 用户管理API
-  router.get('/api/user', controller.api.user.index);
-  // 商品管理API
-  router.get('/api/product', controller.api.product.index);
+  router.get('/login', controller.user.login);
 
+  router.get('/register', controller.user.register);
 
-  // 在路由中获取中间件
-  /**
-   * 这里传了参数
-   */
-  const user = app.middleware.user({ title: 'this is router.js中间件' });
-  router.get('/', user, controller.home.index); // 路由中使用中间件
+  router.post('/doLogin', controller.user.doLogin);
 
-  // 使用 kon-jsonp 的中间件
-  router.get('/jsonp', controller.jsonp.index);
-
-  router.get('/loginOut', controller.home.loginOut);
-  router.get('/news', controller.news.index);
-  router.get('/shop', controller.shop.index);
-  router.get('/sessions', controller.sessions.index);
+  router.post('/doRegister', controller.user.doRegister);
 };
