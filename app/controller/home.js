@@ -6,8 +6,10 @@ class HomeController extends Controller {
   async index() {
     const { ctx } = this;
 
-    // 注意这里是异步的，一定要在前面加  await
-    await ctx.render('home');
+    const result = await ctx.service.news.getNewsList();
+
+    console.log('result: ', result);
+    ctx.body = '你好Egg';
   }
 
 }
