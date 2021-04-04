@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>news</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+<!--
+{
+    aid: '486',
+    catid: '20',
+    username: 'admin',
+    title: 'ionic react-native和native开发移动app那个好',
+    pic: 'portal/201602/25/193433dtzfvlzl1oavhljy.jpg',
+    dateline: '1456398960'
+  },
+
+
+/-->
+
+    <div>
+        <ul>
+            <% for(let i = 0; i < lists.length; i++) { %>
+            <li>
+                <p><%= i %>: <a href="/newscontent?aid=<%=lists[i].aid%>"><%= lists[i].title %> - <%= formatTime(lists[i].dateline) %></a></p>
+            </li>
+            <% } %>
+
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+1、创建项目
+
+
+	egg-init spider --type=simple
+
+	cd spider
+
+	npm i
+
+
+2、配置路由控制器
+
+
+
+
+
+3、配置模板引擎
+
+
+
+	1、npm i egg-view-ejs --save
+
+	
+
+
+	2.找到 {app_root}/config/plugin.js
+
+
+	exports.ejs = {
+ 	 enable: true,
+ 	 package: 'egg-view-ejs',
+	};
+
+
+	3.找到 {app_root}/config/config.default.js
+
+
+	//配置ejs模板引擎
+  	config.view = {
+   	 mapping: {
+    	  '.html': 'ejs',
+   	 }
+  	};
+
+
+
+4、配置config公共的url地址
+
+
+
+
+5、路由（router.js）  控制器(controller)  配置(config)  服务（service）  相互协作实现爬取接口实现小小新闻系统
+
+
+	http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1
+
+	http://www.phonegap100.com/appapi.php?a=getPortalArticle&aid=123
+
+
+
+
+
+
+
+
+
+
