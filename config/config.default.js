@@ -41,6 +41,23 @@ module.exports = appInfo => {
     dir: path.join(appInfo.baseDir, 'app/assets'), // 静态资源存放的位置
   };
 
+
+  // 配置 mongo 数据库
+  /**
+   * 登录： mongo eggcms -u eggadmin -p 123456
+   * db.createUser({user:'eggadmin',pwd:'123456',roles:[{role:'dbOwner',db:'eggcms'}]})
+   */
+  config.mongo = {
+    client: {
+      host: '127.0.0.1',
+      port: '27017',
+      name: 'eggcms',
+      user: 'eggadmin',
+      password: '123456',
+      options: {},
+    },
+  };
+
   return {
     ...config,
     ...userConfig,

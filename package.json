@@ -10,10 +10,13 @@
     "cheerio": "^1.0.0-rc.5",
     "dayjs": "^1.10.4",
     "egg": "^2.15.1",
+    "egg-mongo-native": "^3.5.0",
     "egg-scripts": "^2.11.0",
     "egg-view-ejs": "^2.0.1",
     "koa-compress": "^5.0.1",
-    "koa-jsonp": "^2.0.2"
+    "koa-jsonp": "^2.0.2",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.3"
   },
   "devDependencies": {
     "autod": "^3.0.1",
