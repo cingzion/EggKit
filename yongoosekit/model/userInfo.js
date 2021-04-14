@@ -4,10 +4,10 @@ const UserInfoSchema = mongoose.Schema({
     name: {
         type: String,
         trim: true, // 定义 mongoose 模式修饰符 去掉前后空格
-        get(params) { //  不建议使用
-            return `AC001-${params}`;
-
-        }
+    },
+    sn: {
+        tyope: String,
+        index: true, // 增加索引
     },
     age: Number,
     status: {
@@ -18,3 +18,4 @@ const UserInfoSchema = mongoose.Schema({
 
 
 module.exports = mongoose.model('UserInfo', UserInfoSchema, 'userinfo')
+ 

@@ -11,6 +11,7 @@
     "dayjs": "^1.10.4",
     "egg": "^2.15.1",
     "egg-mongo-native": "^3.5.0",
+    "egg-mongoose": "^3.3.1",
     "egg-scripts": "^2.11.0",
     "egg-view-ejs": "^2.0.1",
     "koa-compress": "^5.0.1",

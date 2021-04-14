@@ -47,6 +47,7 @@ module.exports = appInfo => {
    * 登录： mongo eggcms -u eggadmin -p 123456
    * db.createUser({user:'eggadmin',pwd:'123456',roles:[{role:'dbOwner',db:'eggcms'}]})
    */
+  /* 
   config.mongo = {
     client: {
       host: '127.0.0.1',
@@ -56,8 +57,24 @@ module.exports = appInfo => {
       password: '123456',
       options: {},
     },
-  };
+  }; 
+  */
 
+
+  // 配置 egg-mongoose 数据连接
+  /**
+   * 没有密码的：mongodb://127.0.0.1:27017/eggcms
+   * 
+   * 有密码的配置：mongodb://eggadmin:123456@localhost:27017/eggcms'
+   */
+  config.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1/eggcms',
+      options: {
+
+      }
+    }
+  }
   return {
     ...config,
     ...userConfig,

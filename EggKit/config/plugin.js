@@ -11,3 +11,9 @@ exports.mongo = {
   enable: true, // 是否使用 egg-mongo-native 插件
   package: 'egg-mongo-native', // 使用的插件名
 };
+
+// 配置 egg-mongoose 插件
+exports.mongoose = {
+  enable: true,
+  package: 'egg-mongoose'
+}
