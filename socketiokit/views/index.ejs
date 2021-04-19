@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .box{
+            width: 300px;
+            height: 400px;
+            margin: 20px auto 0 auto;
+            border: 1px solid #eee;
+        }
+
+        .list{
+            width: 300px;
+            height: 360px;
+        }
+
+        .message{
+            height: 40px;
+            display: flex;
+        }
+
+        .message input{
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid #666;
+        }
+
+        .message input[type='text']{
+            height: 34px;
+            flex: 1;
+        }
+        .message input[type='button']{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="list" id="list">
+
+        </div>
+
+        <div class="message">
+            <input id="msg" type="text" />
+            <input id="send" type="button" value="发送" />
+        </div>
+    </div>
+
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:8000');
+        const doc = ( id ) => document.getElementById(id);
+
+
+
+        const msg = doc('msg');
+        const send = doc('send');
+        const list = doc('list');
+
+
+        // 聊天室功能--聊天
+
+        send.onclick = () => {
+            // 获取文本框值
+            const val = msg.value;
+            console.log('val:', val)
+            // 获取的值发给服务器，通过广播的方式发送
+
+            // Math.floor 向下取整
+            const userInfo = {
+              userName: `张三${Math.floor(Math.random() +10)}`,
+                msg: val,
+            };
+            socket.emit('message', userInfo); // 客户端给服务器发送数据
+
+            // 创建 p 节点
+            const para = document.createElement('p');
+            // 创建文本节点
+            const node = document.createTextNode(`${userInfo.userName}: ${userInfo.val}`);
+            // 把文本节点添加到 p 节点里
+            para.appendChild(node);
+
+            // 把p节点添加到div1里
+            list.appendChild(para);
+            msg.value = null;
+
+        }
+
+        // 接受服务器返回的数据
+        // 进来就要监听，而不是去触发的时候去监听
+        socket.on('message', (data) => {
+            console.log("我进来了：", data)
+        })
+
+
+
+
+
+    </script>
+</body>
+</html>

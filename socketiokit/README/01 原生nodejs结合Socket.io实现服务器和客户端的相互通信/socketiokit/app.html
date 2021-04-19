@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="socketbox">
+        <h1>客户端</h1>
+        <div class="sockietview">
+            <button id="button">给服务器发送数据</button>
+
+        </div>
+
+    </div>
+    
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        // 服服务器建立连接
+        const socket = io('http://localhost:3000'); 
+
+        // 级服务器发送数据
+        const doc = (id) => document.getElementById(id);
+
+        const btn = doc('button');
+
+        btn.onclick = () => {
+            console.log("111111111");
+
+            // 客户端给服务器发送数据，广播数据
+            socket.emit('addcart', {
+                client: '我是客户端的数据',
+            });
+
+            // 服务端广播的数据
+            socket.on('to-client', data => {
+                console.log("服务端广播的数据：", JSON.parse(data));
+            })
+        }
+
+        
+    </script>
+</body>
+</html>
