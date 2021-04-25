@@ -1,0 +1,6 @@
+
+配置全局的referer 记录上一页的地址
+
+ 
+
+   ctx.state.referer=ctx.request.headers['referer'];
