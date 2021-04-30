@@ -27,6 +27,7 @@ module.exports = app => {
   router.get('/admin/manager/add', controller.admin.manager.add); // 管理添加
   router.post('/admin/manager/doAdd', controller.admin.manager.doAdd); // 管理添加数据保存
   router.get('/admin/manager/edit', controller.admin.manager.edit); // 管理编辑
+  router.post('/admin/manager/doEdit', controller.admin.manager.doEdit); // 编辑保存
 
   // TODO: 角色
   router.get('/admin/role', controller.admin.role.index); // 角色列表
@@ -42,7 +43,9 @@ module.exports = app => {
   // TODO: 权限
   router.get('/admin/access', controller.admin.access.index); // 权限列表
   router.get('/admin/access/add', controller.admin.access.add); // 权限添加
+  router.post('/admin/access/doAdd', controller.admin.access.doAdd); // 保存权限增加
   router.get('/admin/access/edit', controller.admin.access.edit); // 权限编辑
+  router.post('/admin/access/doEdit', controller.admin.access.doEdit); // 权限编辑保存
   router.get('/admin/access/delete', controller.admin.access.delete); // 权限删除
 
 };
